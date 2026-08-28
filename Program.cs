@@ -31,7 +31,18 @@
             //Console.WriteLine(names.Get(1));        
             #endregion
 
+            #region Q3)
+            //What are multiple type parameters? Write Pair<TKey, TValue>?
 
+            /*
+             * Allow a generic class to work with more than one type parameter at the same time (not just have a one placeholder).
+             * The class own more than one generic type. Use it when need to apply more than one data type.
+             */
+
+            Pair<int, string> empLogin = new Pair<int, string>(20, "Ali");
+
+            Console.WriteLine($"{empLogin.Id}-{empLogin.Name}");
+            #endregion
         }
     }
 }
