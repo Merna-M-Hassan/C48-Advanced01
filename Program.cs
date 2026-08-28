@@ -59,6 +59,14 @@ namespace Assignment_10_C__Advanced
             //Utility.Swap<int>(ref a, ref b);
             //Console.WriteLine($"a = {a}\nb = {b}");
             #endregion
+
+            #region Q5)
+            //Write a generic method FindMax<T> that finds maximum value.
+
+           int  numberOne = 50, numberTwo = 100;
+
+            Console.WriteLine(Utility.Max<int>(numberOne, numberTwo)); ;
+            #endregion
         }
     }
 }
