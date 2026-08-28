@@ -1,4 +1,6 @@
-﻿namespace Assignment_10_C__Advanced
+﻿using Assignment_10_C__Advanced.GenericMethod;
+
+namespace Assignment_10_C__Advanced
 {
     internal class Program
     {
@@ -39,9 +41,23 @@
              * The class own more than one generic type. Use it when need to apply more than one data type.
              */
 
-            Pair<int, string> empLogin = new Pair<int, string>(20, "Ali");
+            //Pair<int, string> empLogin = new Pair<int, string>(20, "Ali");
 
-            Console.WriteLine($"{empLogin.Id}-{empLogin.Name}");
+            //Console.WriteLine($"{empLogin.Id}-{empLogin.Name}");
+            #endregion
+
+            #region Q4)
+            //What is a generic method? Write Swap<T> method.
+
+            /*
+             *Method can accept diffferent types of parameters thar are defined when the method ia called.
+             *Use generic method to make the code reusable, use the same method each time want to make change in data types for method's parameters.
+             */
+
+            //int a = 5, b = 6;
+
+            //Utility.Swap<int>(ref a, ref b);
+            //Console.WriteLine($"a = {a}\nb = {b}");
             #endregion
         }
     }
