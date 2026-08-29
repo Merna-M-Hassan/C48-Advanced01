@@ -123,13 +123,27 @@ namespace Assignment_10_C__Advanced
              * Parameterless constructor constraint: the defined generic data type must have a public parameterless constructor, to use it as a type to the T.
              */
 
-            Factory<Person> factory01 = new Factory<Person>();
-            Person person01 = factory01.Create();
+            //Factory<Person> factory01 = new Factory<Person>();
+            //Person person01 = factory01.Create();
 
-            person01.Name = "Lili";
-            person01.Age = 30;
+            //person01.Name = "Lili";
+            //person01.Age = 30;
 
-            Console.WriteLine($"Name: {person01.Name}, Age: {person01.Age}");
+            //Console.WriteLine($"Name: {person01.Name}, Age: {person01.Age}");
+            #endregion
+
+            #region Q10)
+            //What is the interface constraint? Write an example.
+
+            /*
+             * Must defined an interface in a generic placeholder, to be implemented
+             */
+
+            //SoundMaker<Dog> dog = new SoundMaker<Dog>();
+            //dog.MakeSound(new Dog());  
+
+            //SoundMaker<Cat> cat = new SoundMaker<Cat>();
+            //cat.MakeSound(new Cat());  
             #endregion
         }
 
@@ -138,5 +152,26 @@ namespace Assignment_10_C__Advanced
         //{
         //    Console.WriteLine(value);
         //}
+
+        //Q10)
+        public interface IAnimal
+        {
+            void MakeSound();
+        }
+
+        public class Dog : IAnimal
+        {
+            public void MakeSound() => Console.WriteLine("Woof!");
+        }
+
+        public class Cat : IAnimal
+        {
+            public void MakeSound() => Console.WriteLine("Meow!");
+        }
+
+        public class SoundMaker<T> where T : IAnimal
+        {
+            public void MakeSound(T animal) => animal.MakeSound();
+        }
     }
 }
