@@ -203,16 +203,27 @@ namespace Assignment_10_C__Advanced
             #region Q14)
             //Write a SafeList<T> that returns default when the index is invalid.
 
-            SafeList<int> list = new SafeList<int>();
+            //SafeList<int> list = new SafeList<int>();
 
-            list.Add(10);
-            list.Add(50);
-            list.Add(20);
+            //list.Add(10);
+            //list.Add(50);
+            //list.Add(20);
 
-            Console.WriteLine(list.GetAt(2));
-            Console.WriteLine(list.GetAt(6)); 
+            //Console.WriteLine(list.GetAt(2));
+            //Console.WriteLine(list.GetAt(6)); 
             #endregion
 
+            #region Q15)
+            //What is covariance? Explain the 'out' keyword.
+
+            /*
+             * Allows to use a more derived type (subclass) where a less derived type (base class) is expected.
+             * Covariance lets  pass a subclass to code that expects a base class, as long as it only reads from it.
+             * 
+             * The out keyword marks a generic type parameter as covariant. This means, the type parameter can only be used as a return type (output), not as an input parameter.
+             * Enables covariance by guaranteeing that the generic type only appears as output (return values).
+             */
+            #endregion
 
         }
 
