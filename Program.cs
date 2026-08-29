@@ -225,6 +225,17 @@ namespace Assignment_10_C__Advanced
              */
             #endregion
 
+            #region Q16)
+            //What is contravariance? Explain the 'in' keyword.
+
+            /*
+             * Allows to use a less derived type (base class) where a more derived type (subclass) is expected.
+             * 
+             * The in keyword marks a generic type parameter as contravariant.
+             * Enables contravariance by guaranteeing a generic type parameter is input only. 
+             */
+            #endregion
+
         }
 
         //Q8) Example method
