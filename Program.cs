@@ -115,6 +115,22 @@ namespace Assignment_10_C__Advanced
 
             //Print<string>("Lili");   
             #endregion
+
+            #region Q9)
+            //What is the 'new()' constraint? Write an example.
+
+            /*
+             * Parameterless constructor constraint: the defined generic data type must have a public parameterless constructor, to use it as a type to the T.
+             */
+
+            Factory<Person> factory01 = new Factory<Person>();
+            Person person01 = factory01.Create();
+
+            person01.Name = "Lili";
+            person01.Age = 30;
+
+            Console.WriteLine($"Name: {person01.Name}, Age: {person01.Age}");
+            #endregion
         }
 
         //Q8) Example method
