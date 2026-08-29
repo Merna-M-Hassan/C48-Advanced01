@@ -180,12 +180,24 @@ namespace Assignment_10_C__Advanced
              * By combining them using a comma-separated list
              */
 
-            EmployeeManager<Employee> manager = new EmployeeManager<Employee>();
+            //EmployeeManager<Employee> manager = new EmployeeManager<Employee>();
 
-            Employee emp = manager.CreateDefault();
-            emp.Name = "Lili";
+            //Employee emp = manager.CreateDefault();
+            //emp.Name = "Lili";
 
-            manager.Manage(emp);
+            //manager.Manage(emp);
+            #endregion
+
+            #region Q13)
+            //What does the 'default' keyword do in generics?
+
+            /*
+             * Returns the default value for a generic type T.
+             * - Reference Types (class) ----> null
+             * - Value Types (int, double, bool) ---->	0, 0.0, false
+             * - Nullable Types (int?, bool?)	-----> null
+             * - Structs -----> All fields set to their default values
+             */
             #endregion
         }
 
