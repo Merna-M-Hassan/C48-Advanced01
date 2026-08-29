@@ -199,6 +199,23 @@ namespace Assignment_10_C__Advanced
              * - Structs -----> All fields set to their default values
              */
             #endregion
+
+            #region Q14)
+            //Write a SafeList<T> that returns default when the index is invalid.
+
+            Container<int> intContainer = new Container<int>(4);
+
+            intContainer.Add(10);
+            intContainer.Add(20);
+            intContainer.Add(30);
+            intContainer.Add(40);
+
+            Console.WriteLine(intContainer.Get(0));  
+            Console.WriteLine(intContainer.Get(1));  
+            Console.WriteLine(intContainer.Get(2));  
+            Console.WriteLine(intContainer.Get(3)); 
+            Console.WriteLine(intContainer.Get(5));
+            #endregion
         }
 
         //Q8) Example method
@@ -310,5 +327,7 @@ namespace Assignment_10_C__Advanced
                 return employee;
             }
         }
+
+        // --------------------------------------------------------------------------------------------//
     }
 }
