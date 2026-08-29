@@ -105,6 +105,22 @@ namespace Assignment_10_C__Advanced
             //Utility.Swap<int>(ref a, ref b);
             //Console.WriteLine($"a = {a}\nb = {b}");
             #endregion
+
+            #region Q8)
+            //What is the 'class' constraint? Write an example.
+
+            /*
+             * The accepted reference data type is only a class/interface/array/string.
+             */
+
+            //Print<string>("Lili");   
+            #endregion
         }
+
+        //Q8) Example method
+        //public static void Print<T>(T value) where T : class
+        //{
+        //    Console.WriteLine(value);
+        //}
     }
 }
