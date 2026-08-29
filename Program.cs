@@ -153,24 +153,39 @@ namespace Assignment_10_C__Advanced
              * The defined data type of generic placeholder must be from base/parent class, not derived/child class.
              */
 
-            // Create animals
-            Dog dog = new Dog { Name = "Rex" };
-            Cat cat = new Cat { Name = "Whiskers" };
+            //// Create animals
+            //Dog dog = new Dog { Name = "Rex" };
+            //Cat cat = new Cat { Name = "Whiskers" };
 
-            // Create processors
-            AnimalProcessor<Dog> dogProcessor = new AnimalProcessor<Dog>();
-            AnimalProcessor<Cat> catProcessor = new AnimalProcessor<Cat>();
+            //// Create processors
+            //AnimalProcessor<Dog> dogProcessor = new AnimalProcessor<Dog>();
+            //AnimalProcessor<Cat> catProcessor = new AnimalProcessor<Cat>();
 
-            // Process animals
-            Console.WriteLine("Processing Dog:");
-            dogProcessor.Process(dog);
-            dog.Bark();
+            //// Process animals
+            //Console.WriteLine("Processing Dog:");
+            //dogProcessor.Process(dog);
+            //dog.Bark();
 
-            Console.WriteLine("---------------------------------------");
+            //Console.WriteLine("---------------------------------------");
 
-            Console.WriteLine("Processing Cat:");
-            catProcessor.Process(cat);
-            cat.Meow();
+            //Console.WriteLine("Processing Cat:");
+            //catProcessor.Process(cat);
+            //cat.Meow();
+            #endregion
+
+            #region Q12)
+            //How do you apply multiple constraints? Write an example.
+
+            /*
+             * By combining them using a comma-separated list
+             */
+
+            EmployeeManager<Employee> manager = new EmployeeManager<Employee>();
+
+            Employee emp = manager.CreateDefault();
+            emp.Name = "Lili";
+
+            manager.Manage(emp);
             #endregion
         }
 
@@ -206,30 +221,81 @@ namespace Assignment_10_C__Advanced
         // --------------------------------------------------------------------------------------------//
 
         //Q11)
-        public class Animal
+        //public class Animal
+        //{
+        //    public string Name { get; set; }
+        //    public void Eat() => Console.WriteLine($"{Name} is eating");
+        //    public void Sleep() => Console.WriteLine($"{Name} is sleeping");
+        //}
+
+        //public class Dog : Animal
+        //{
+        //    public void Bark() => Console.WriteLine($"{Name} says: Woof!");
+        //}
+
+        //public class Cat : Animal
+        //{
+        //    public void Meow() => Console.WriteLine($"{Name} says: Meow!");
+        //}
+
+        //public class AnimalProcessor<T> where T : Animal  // Base class constraint!
+        //{
+        //    public void Process(T animal)
+        //    {
+        //        animal.Eat();
+        //        animal.Sleep(); 
+        //        Console.WriteLine($"\nProcessing {animal.Name}:"); 
+        //    }
+        //}
+
+        // --------------------------------------------------------------------------------------------//
+
+        // Q12)
+        // Base class
+        public class Person
         {
             public string Name { get; set; }
-            public void Eat() => Console.WriteLine($"{Name} is eating");
-            public void Sleep() => Console.WriteLine($"{Name} is sleeping");
+            public void SayHello() => Console.WriteLine($"Hello, I'm {Name}");
         }
 
-        public class Dog : Animal
+        // Interface
+        public interface IWorker
         {
-            public void Bark() => Console.WriteLine($"{Name} says: Woof!");
+            void Work();
         }
 
-        public class Cat : Animal
+        // Interface
+        public interface IRest
         {
-            public void Meow() => Console.WriteLine($"{Name} says: Meow!");
+            void Rest();
         }
 
-        public class AnimalProcessor<T> where T : Animal  // Base class constraint!
+        // Class that meets all constraints
+        public class Employee : Person, IWorker, IRest
         {
-            public void Process(T animal)
+            public Employee() { } // Parameterless constructor
+
+            public void Work() => Console.WriteLine($"{Name} is working");
+            public void Rest() => Console.WriteLine($"{Name} is resting");
+        }
+
+        // Generic class with multiple constraints
+        public class EmployeeManager<T> where T : Person, IWorker, IRest, new()
+        {
+            public void Manage(T employee)
             {
-                animal.Eat();
-                animal.Sleep(); 
-                Console.WriteLine($"\nProcessing {animal.Name}:"); 
+                Console.WriteLine($"Managing {employee.Name}:");
+                employee.SayHello(); // From Person
+                employee.Work();     // From IWorker
+                employee.Rest();     // From IRest
+                Console.WriteLine();
+            }
+
+            public T CreateDefault()
+            {
+                T employee = new T();
+                employee.Name = "Default Employee";
+                return employee;
             }
         }
     }
