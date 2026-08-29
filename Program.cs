@@ -1,10 +1,434 @@
-﻿namespace Assignment_10_C__Advanced
+﻿using Assignment_10_C__Advanced.GenericMethod;
+using SessionDemo.GenericClass;
+
+namespace Assignment_10_C__Advanced
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            
-        }
+            #region Q1)
+            //What is a generic class? Why use generics?
+
+            /*
+             * Is a class without a defined data type (string/double/int/..etc) for its field, until using it. Instead, it has a placeholder for
+             * the data type is defined when using the class. Once an object/instance is created from the generic class, the data type must be defined.
+             * 
+             * Use generics because we need to apply the following: 
+             * - To make code reusability:  reuse the class in different data types.
+             * - Need all fields/properties to have the same defined data type.
+             * - Enforce compiler type safety (check for values are compatible with the defined data type)
+             */
+            #endregion
+
+            #region Q2)
+            // Write a generic class Container<T> with Add and Get methods.
+
+            //Container<string> names = new Container<string>(5);
+
+            //names.Add("Ali");
+            //names.Add("Mariam");
+            //names.Add("Faya");
+            //names.Add("Lara");
+
+            //Console.WriteLine(names.Get(1));        
+            #endregion
+
+            #region Q3)
+            //What are multiple type parameters? Write Pair<TKey, TValue>?
+
+            /*
+             * Allow a generic class to work with more than one type parameter at the same time (not just have a one placeholder).
+             * The class own more than one generic type. Use it when need to apply more than one data type.
+             */
+
+            //Pair<int, string> empLogin = new Pair<int, string>(20, "Ali");
+
+            //Console.WriteLine($"{empLogin.Id}-{empLogin.Name}");
+            #endregion
+
+            #region Q4)
+            //What is a generic method? Write Swap<T> method.
+
+            /*
+             *Method can accept diffferent types of parameters thar are defined when the method ia called.
+             *Use generic method to make the code reusable, use the same method each time want to make change in data types for method's parameters.
+             */
+
+            //int a = 5, b = 6;
+
+            //Utility.Swap<int>(ref a, ref b);
+            //Console.WriteLine($"a = {a}\nb = {b}");
+            #endregion
+
+            #region Q5)
+            //Write a generic method FindMax<T> that finds maximum value.
+
+            //int  numberOne = 50, numberTwo = 100;
+
+            // Console.WriteLine(Utility.Max<int>(numberOne, numberTwo)); ;
+            #endregion
+
+            #region Q6)
+            //What is a generic interface? Write IRepository<T>.
+
+            /*
+             * Defines a contract that can work with any data type. Don't care what that type until implement the interface.
+             * Any class/struct implement the generic interface will defines the data type.
+             */
+
+            //Product product01 = new Product(201, "Laptop", 16.500m);
+            //Product product02 = new Product(203, "TV", 60.00m);
+            //Product product03 = new Product(206, "Smart Watch", 10.500m);
+
+            //ProductRepository repository = new ProductRepository();
+
+            //repository.Add(product01);
+            //repository.Add(product02);
+            //repository.Add(product03);
+
+            //List<Product> products = repository.GetAll();
+
+            //Product p01 = repository.GetById(206);
+
+            //repository.Delete(203);
+            #endregion
+
+            #region Q7)
+            //What is the 'struct' constraint? Write an example.
+
+            /*
+             * The accepted value type of the generic placeholder is only a struct (value) type, not accepted anything else.
+             */
+
+            //int a = 20, b = 30;
+
+            //Utility.Swap<int>(ref a, ref b);
+            //Console.WriteLine($"a = {a}\nb = {b}");
+            #endregion
+
+            #region Q8)
+            //What is the 'class' constraint? Write an example.
+
+            /*
+             * The accepted reference data type is only a class/interface/array/string.
+             */
+
+            //Print<string>("Lili");   
+            #endregion
+
+            #region Q9)
+            //What is the 'new()' constraint? Write an example.
+
+            /*
+             * Parameterless constructor constraint: the defined generic data type must have a public parameterless constructor, to use it as a type to the T.
+             */
+
+            //Factory<Person> factory01 = new Factory<Person>();
+            //Person person01 = factory01.Create();
+
+            //person01.Name = "Lili";
+            //person01.Age = 30;
+
+            //Console.WriteLine($"Name: {person01.Name}, Age: {person01.Age}");
+            #endregion
+
+            #region Q10)
+            //What is the interface constraint? Write an example.
+
+            /*
+             * Must defined an interface in a generic placeholder, to be implemented
+             */
+
+            //SoundMaker<Dog> dog = new SoundMaker<Dog>();
+            //dog.MakeSound(new Dog());  
+
+            //SoundMaker<Cat> cat = new SoundMaker<Cat>();
+            //cat.MakeSound(new Cat());  
+            #endregion
+
+            #region Q11)
+            //What is the base class constraint? Write an example.
+
+            /*
+             * The defined data type of generic placeholder must be from base/parent class, not derived/child class.
+             */
+
+            //// Create animals
+            //Dog dog = new Dog { Name = "Rex" };
+            //Cat cat = new Cat { Name = "Whiskers" };
+
+            //// Create processors
+            //AnimalProcessor<Dog> dogProcessor = new AnimalProcessor<Dog>();
+            //AnimalProcessor<Cat> catProcessor = new AnimalProcessor<Cat>();
+
+            //// Process animals
+            //Console.WriteLine("Processing Dog:");
+            //dogProcessor.Process(dog);
+            //dog.Bark();
+
+            //Console.WriteLine("---------------------------------------");
+
+            //Console.WriteLine("Processing Cat:");
+            //catProcessor.Process(cat);
+            //cat.Meow();
+            #endregion
+
+            #region Q12)
+            //How do you apply multiple constraints? Write an example.
+
+            /*
+             * By combining them using a comma-separated list
+             */
+
+            //EmployeeManager<Employee> manager = new EmployeeManager<Employee>();
+
+            //Employee emp = manager.CreateDefault();
+            //emp.Name = "Lili";
+
+            //manager.Manage(emp);
+            #endregion
+
+            #region Q13)
+            //What does the 'default' keyword do in generics?
+
+            /*
+             * Returns the default value for a generic type T.
+             * - Reference Types (class) ----> null
+             * - Value Types (int, double, bool) ---->	0, 0.0, false
+             * - Nullable Types (int?, bool?)	-----> null
+             * - Structs -----> All fields set to their default values
+             */
+            #endregion
+
+            #region Q14)
+            //Write a SafeList<T> that returns default when the index is invalid.
+
+            //SafeList<int> list = new SafeList<int>();
+
+            //list.Add(10);
+            //list.Add(50);
+            //list.Add(20);
+
+            //Console.WriteLine(list.GetAt(2));
+            //Console.WriteLine(list.GetAt(6)); 
+            #endregion
+
+            #region Q15)
+            //What is covariance? Explain the 'out' keyword.
+
+            /*
+             * Allows to use a more derived type (subclass) where a less derived type (base class) is expected.
+             * Covariance lets  pass a subclass to code that expects a base class, as long as it only reads from it.
+             * 
+             * The out keyword marks a generic type parameter as covariant. This means, the type parameter can only be used as a return type (output), not as an input parameter.
+             * Enables covariance by guaranteeing that the generic type only appears as output (return values).
+             */
+            #endregion
+
+            #region Q16)
+            //What is contravariance? Explain the 'in' keyword.
+
+            /*
+             * Allows to use a less derived type (base class) where a more derived type (subclass) is expected.
+             * 
+             * The in keyword marks a generic type parameter as contravariant.
+             * Enables contravariance by guaranteeing a generic type parameter is input only. 
+             */
+            #endregion
+
+            #region Q17)
+            //What is the difference between covariance and contravariance?
+
+            /*
+             * Covariance (out)--> can use a more specific type where a more general type is expected.
+             * Contravariance (in)---> can use a more general type where a more specific type is expected
+             */
+            #endregion
+
+            #region Q18)
+            //How do static members work in generic types?
+
+            /*
+             *Are not shared across different generic instantiations. Each time you use a generic type with a different type parameter, get a completely separate copy of all static members.
+             *Each type gets its own static constructor (called once per type).
+             *Each type has its own static fields and properties.
+             */
+            #endregion
+
+            #region Q19)
+            //How can you inherit from a generic class?
+
+            /*
+             * By Keeping the type parameter open: the derived class remains generic and passes the type parameter to the base class.
+             * Close the type parameter: the derived class is non-generic and specifies the exact type for the base class.
+             * Partially close the type parameter: use some type parameters and keep others open.
+             */
+            #endregion
+
+            #region Q20)
+            // Create cache with 5-second expiration
+            Cache<string, string> cache = new Cache<string, string>(TimeSpan.FromSeconds(5));
+
+            // 1. Add items
+            cache.Add("name", "Ali");
+            cache.Add("city", "Cairo");
+            cache.Add("session", "Active", TimeSpan.FromSeconds(2)); // expires in 2 seconds
+
+            // 2. Get items
+            Console.WriteLine($"Get('name'): {cache.Get("name")}");
+            Console.WriteLine($"Get('city'): {cache.Get("city")}");
+            Console.WriteLine($"Get('unknown'): {cache.Get("unknown") ?? "null"}");
+
+            // 3. Contains
+            Console.WriteLine($"\nContains('name'): {cache.Contains("name")}");
+            Console.WriteLine($"Contains('unknown'): {cache.Contains("unknown")}");
+
+            // 4. Remove
+            Console.WriteLine($"\nRemove('city'): {cache.Remove("city")}");
+            Console.WriteLine($"Get('city') after remove: {cache.Get("city") ?? "null"}");
+
+            // 5. Count
+            Console.WriteLine($"\nCurrent count: {cache.Count}");
+
+            // 6. Expiration demo
+            Console.WriteLine($"\nSession before expiration: {cache.Get("session")}");
+            Console.WriteLine("Waiting 3 seconds...");
+            System.Threading.Thread.Sleep(3000);
+            Console.WriteLine($"Session after expiration: {cache.Get("session") ?? "null (expired)"}");
+            Console.WriteLine($"Count after expiration: {cache.Count}");
+
+            // 7. Clear
+            cache.Clear();
+            Console.WriteLine($"\nCount after clear: {cache.Count}");
+
+            // 8. Different types
+            Console.WriteLine("\n=== Different Types ===");
+            Cache<int, string> intCache = new Cache<int, string>(TimeSpan.FromSeconds(10));
+            intCache.Add(1, "One");
+            intCache.Add(2, "Two");
+            Console.WriteLine($"Get(1): {intCache.Get(1)}");
+            Console.WriteLine($"Get(2): {intCache.Get(2)}");
+
+            Cache<string, int> stringIntCache = new Cache<string, int>(TimeSpan.FromSeconds(10));
+            stringIntCache.Add("age", 30);
+            stringIntCache.Add("score", 95);
+            Console.WriteLine($"Get('age'): {stringIntCache.Get("age")}");
+            Console.WriteLine($"Get('score'): {stringIntCache.Get("score")}");
+ 
+        #endregion
+}
+
+        //Q8) Example method
+        //public static void Print<T>(T value) where T : class
+        //{
+        //    Console.WriteLine(value);
+        //}
+
+        // --------------------------------------------------------------------------------------------//
+
+        //Q10)
+        //public interface IAnimal
+        //{
+        //    void MakeSound();
+        //}
+
+        //public class Dog : IAnimal
+        //{
+        //    public void MakeSound() => Console.WriteLine("Woof!");
+        //}
+
+        //public class Cat : IAnimal
+        //{
+        //    public void MakeSound() => Console.WriteLine("Meow!");
+        //}
+
+        //public class SoundMaker<T> where T : IAnimal
+        //{
+        //    public void MakeSound(T animal) => animal.MakeSound();
+        //}
+
+        // --------------------------------------------------------------------------------------------//
+
+        //Q11)
+        //public class Animal
+        //{
+        //    public string Name { get; set; }
+        //    public void Eat() => Console.WriteLine($"{Name} is eating");
+        //    public void Sleep() => Console.WriteLine($"{Name} is sleeping");
+        //}
+
+        //public class Dog : Animal
+        //{
+        //    public void Bark() => Console.WriteLine($"{Name} says: Woof!");
+        //}
+
+        //public class Cat : Animal
+        //{
+        //    public void Meow() => Console.WriteLine($"{Name} says: Meow!");
+        //}
+
+        //public class AnimalProcessor<T> where T : Animal  // Base class constraint!
+        //{
+        //    public void Process(T animal)
+        //    {
+        //        animal.Eat();
+        //        animal.Sleep(); 
+        //        Console.WriteLine($"\nProcessing {animal.Name}:"); 
+        //    }
+        //}
+
+        // --------------------------------------------------------------------------------------------//
+
+        // Q12)
+        // Base class
+        //public class Person
+        //{
+        //    public string Name { get; set; }
+        //    public void SayHello() => Console.WriteLine($"Hello, I'm {Name}");
+        //}
+
+        //// Interface
+        //public interface IWorker
+        //{
+        //    void Work();
+        //}
+
+        //// Interface
+        //public interface IRest
+        //{
+        //    void Rest();
+        //}
+
+        //// Class that meets all constraints
+        //public class Employee : Person, IWorker, IRest
+        //{
+        //    public Employee() { } // Parameterless constructor
+
+        //    public void Work() => Console.WriteLine($"{Name} is working");
+        //    public void Rest() => Console.WriteLine($"{Name} is resting");
+        //}
+
+        //// Generic class with multiple constraints
+        //public class EmployeeManager<T> where T : Person, IWorker, IRest, new()
+        //{
+        //    public void Manage(T employee)
+        //    {
+        //        Console.WriteLine($"Managing {employee.Name}:");
+        //        employee.SayHello(); // From Person
+        //        employee.Work();     // From IWorker
+        //        employee.Rest();     // From IRest
+        //        Console.WriteLine();
+        //    }
+
+        //    public T CreateDefault()
+        //    {
+        //        T employee = new T();
+        //        employee.Name = "Default Employee";
+        //        return employee;
+        //    }
+        //}
+
+        // --------------------------------------------------------------------------------------------//
     }
 }
