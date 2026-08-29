@@ -236,6 +236,15 @@ namespace Assignment_10_C__Advanced
              */
             #endregion
 
+            #region Q17)
+            //What is the difference between covariance and contravariance?
+
+            /*
+             * Covariance (out)--> can use a more specific type where a more general type is expected.
+             * Contravariance (in)---> can use a more general type where a more specific type is expected
+             */
+            #endregion
+
         }
 
         //Q8) Example method
