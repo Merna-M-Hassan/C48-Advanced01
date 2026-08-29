@@ -1,4 +1,5 @@
 ﻿using Assignment_10_C__Advanced.GenericMethod;
+using SessionDemo.GenericClass;
 
 namespace Assignment_10_C__Advanced
 {
@@ -264,7 +265,59 @@ namespace Assignment_10_C__Advanced
              * Partially close the type parameter: use some type parameters and keep others open.
              */
             #endregion
-        }
+
+            #region Q20)
+            // Create cache with 5-second expiration
+            Cache<string, string> cache = new Cache<string, string>(TimeSpan.FromSeconds(5));
+
+            // 1. Add items
+            cache.Add("name", "Ali");
+            cache.Add("city", "Cairo");
+            cache.Add("session", "Active", TimeSpan.FromSeconds(2)); // expires in 2 seconds
+
+            // 2. Get items
+            Console.WriteLine($"Get('name'): {cache.Get("name")}");
+            Console.WriteLine($"Get('city'): {cache.Get("city")}");
+            Console.WriteLine($"Get('unknown'): {cache.Get("unknown") ?? "null"}");
+
+            // 3. Contains
+            Console.WriteLine($"\nContains('name'): {cache.Contains("name")}");
+            Console.WriteLine($"Contains('unknown'): {cache.Contains("unknown")}");
+
+            // 4. Remove
+            Console.WriteLine($"\nRemove('city'): {cache.Remove("city")}");
+            Console.WriteLine($"Get('city') after remove: {cache.Get("city") ?? "null"}");
+
+            // 5. Count
+            Console.WriteLine($"\nCurrent count: {cache.Count}");
+
+            // 6. Expiration demo
+            Console.WriteLine($"\nSession before expiration: {cache.Get("session")}");
+            Console.WriteLine("Waiting 3 seconds...");
+            System.Threading.Thread.Sleep(3000);
+            Console.WriteLine($"Session after expiration: {cache.Get("session") ?? "null (expired)"}");
+            Console.WriteLine($"Count after expiration: {cache.Count}");
+
+            // 7. Clear
+            cache.Clear();
+            Console.WriteLine($"\nCount after clear: {cache.Count}");
+
+            // 8. Different types
+            Console.WriteLine("\n=== Different Types ===");
+            Cache<int, string> intCache = new Cache<int, string>(TimeSpan.FromSeconds(10));
+            intCache.Add(1, "One");
+            intCache.Add(2, "Two");
+            Console.WriteLine($"Get(1): {intCache.Get(1)}");
+            Console.WriteLine($"Get(2): {intCache.Get(2)}");
+
+            Cache<string, int> stringIntCache = new Cache<string, int>(TimeSpan.FromSeconds(10));
+            stringIntCache.Add("age", 30);
+            stringIntCache.Add("score", 95);
+            Console.WriteLine($"Get('age'): {stringIntCache.Get("age")}");
+            Console.WriteLine($"Get('score'): {stringIntCache.Get("score")}");
+ 
+        #endregion
+}
 
         //Q8) Example method
         //public static void Print<T>(T value) where T : class
