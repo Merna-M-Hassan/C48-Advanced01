@@ -26,6 +26,7 @@ namespace Assignment_10_C__Advanced
         public Product? GetById(int id)
         {
             Product product = products.Find(p => p.Id == id);
+            return product;
         }
     }
 }

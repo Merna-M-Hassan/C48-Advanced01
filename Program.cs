@@ -76,21 +76,34 @@ namespace Assignment_10_C__Advanced
              * Any class/struct implement the generic interface will defines the data type.
              */
 
-            Product product01 = new Product(201, "Laptop", 16.500m);
-            Product product02 = new Product(203, "TV", 60.00m);
-            Product product03 = new Product(206, "Smart Watch", 10.500m);
+            //Product product01 = new Product(201, "Laptop", 16.500m);
+            //Product product02 = new Product(203, "TV", 60.00m);
+            //Product product03 = new Product(206, "Smart Watch", 10.500m);
 
-            ProductRepository repository = new ProductRepository();
+            //ProductRepository repository = new ProductRepository();
 
-            repository.Add(product01);
-            repository.Add(product02);
-            repository.Add(product03);
+            //repository.Add(product01);
+            //repository.Add(product02);
+            //repository.Add(product03);
 
-            List<Product> products = repository.GetAll();
+            //List<Product> products = repository.GetAll();
 
-            Product p01 = repository.GetById(206);
+            //Product p01 = repository.GetById(206);
 
-            repository.Delete(203);
+            //repository.Delete(203);
+            #endregion
+
+            #region Q7)
+            //What is the 'struct' constraint? Write an example.
+
+            /*
+             * The accepted value type of the generic placeholder is only a struct (value) type, not accepted anything else.
+             */
+
+            //int a = 20, b = 30;
+
+            //Utility.Swap<int>(ref a, ref b);
+            //Console.WriteLine($"a = {a}\nb = {b}");
             #endregion
         }
     }

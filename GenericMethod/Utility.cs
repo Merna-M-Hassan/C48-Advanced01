@@ -8,7 +8,8 @@ namespace Assignment_10_C__Advanced.GenericMethod
     {
         //Swap method
         //Once use/when call the method will define the <T> data type.
-        public static void Swap<T>(ref T a, ref T b)
+        //Using Struct Constarint 
+        public static void Swap<T>(ref T a, ref T b) where T : struct 
         {
             T temp = a; 
             a = b;
