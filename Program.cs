@@ -245,6 +245,16 @@ namespace Assignment_10_C__Advanced
              */
             #endregion
 
+
+            #region Q18)
+            //How do static members work in generic types?
+
+            /*
+             *Are not shared across different generic instantiations. Each time you use a generic type with a different type parameter, get a completely separate copy of all static members.
+             *Each type gets its own static constructor (called once per type).
+             *Each type has its own static fields and properties.
+             */
+            #endregion
         }
 
         //Q8) Example method
