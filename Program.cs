@@ -145,6 +145,33 @@ namespace Assignment_10_C__Advanced
             //SoundMaker<Cat> cat = new SoundMaker<Cat>();
             //cat.MakeSound(new Cat());  
             #endregion
+
+            #region Q11)
+            //What is the base class constraint? Write an example.
+
+            /*
+             * The defined data type of generic placeholder must be from base/parent class, not derived/child class.
+             */
+
+            // Create animals
+            Dog dog = new Dog { Name = "Rex" };
+            Cat cat = new Cat { Name = "Whiskers" };
+
+            // Create processors
+            AnimalProcessor<Dog> dogProcessor = new AnimalProcessor<Dog>();
+            AnimalProcessor<Cat> catProcessor = new AnimalProcessor<Cat>();
+
+            // Process animals
+            Console.WriteLine("Processing Dog:");
+            dogProcessor.Process(dog);
+            dog.Bark();
+
+            Console.WriteLine("---------------------------------------");
+
+            Console.WriteLine("Processing Cat:");
+            catProcessor.Process(cat);
+            cat.Meow();
+            #endregion
         }
 
         //Q8) Example method
@@ -153,25 +180,57 @@ namespace Assignment_10_C__Advanced
         //    Console.WriteLine(value);
         //}
 
+        // --------------------------------------------------------------------------------------------//
+
         //Q10)
-        public interface IAnimal
+        //public interface IAnimal
+        //{
+        //    void MakeSound();
+        //}
+
+        //public class Dog : IAnimal
+        //{
+        //    public void MakeSound() => Console.WriteLine("Woof!");
+        //}
+
+        //public class Cat : IAnimal
+        //{
+        //    public void MakeSound() => Console.WriteLine("Meow!");
+        //}
+
+        //public class SoundMaker<T> where T : IAnimal
+        //{
+        //    public void MakeSound(T animal) => animal.MakeSound();
+        //}
+
+        // --------------------------------------------------------------------------------------------//
+
+        //Q11)
+        public class Animal
         {
-            void MakeSound();
+            public string Name { get; set; }
+            public void Eat() => Console.WriteLine($"{Name} is eating");
+            public void Sleep() => Console.WriteLine($"{Name} is sleeping");
         }
 
-        public class Dog : IAnimal
+        public class Dog : Animal
         {
-            public void MakeSound() => Console.WriteLine("Woof!");
+            public void Bark() => Console.WriteLine($"{Name} says: Woof!");
         }
 
-        public class Cat : IAnimal
+        public class Cat : Animal
         {
-            public void MakeSound() => Console.WriteLine("Meow!");
+            public void Meow() => Console.WriteLine($"{Name} says: Meow!");
         }
 
-        public class SoundMaker<T> where T : IAnimal
+        public class AnimalProcessor<T> where T : Animal  // Base class constraint!
         {
-            public void MakeSound(T animal) => animal.MakeSound();
+            public void Process(T animal)
+            {
+                animal.Eat();
+                animal.Sleep(); 
+                Console.WriteLine($"\nProcessing {animal.Name}:"); 
+            }
         }
     }
 }
