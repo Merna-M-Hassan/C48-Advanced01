@@ -203,19 +203,17 @@ namespace Assignment_10_C__Advanced
             #region Q14)
             //Write a SafeList<T> that returns default when the index is invalid.
 
-            Container<int> intContainer = new Container<int>(4);
+            SafeList<int> list = new SafeList<int>();
 
-            intContainer.Add(10);
-            intContainer.Add(20);
-            intContainer.Add(30);
-            intContainer.Add(40);
+            list.Add(10);
+            list.Add(50);
+            list.Add(20);
 
-            Console.WriteLine(intContainer.Get(0));  
-            Console.WriteLine(intContainer.Get(1));  
-            Console.WriteLine(intContainer.Get(2));  
-            Console.WriteLine(intContainer.Get(3)); 
-            Console.WriteLine(intContainer.Get(5));
+            Console.WriteLine(list.GetAt(2));
+            Console.WriteLine(list.GetAt(6)); 
             #endregion
+
+
         }
 
         //Q8) Example method
@@ -281,52 +279,52 @@ namespace Assignment_10_C__Advanced
 
         // Q12)
         // Base class
-        public class Person
-        {
-            public string Name { get; set; }
-            public void SayHello() => Console.WriteLine($"Hello, I'm {Name}");
-        }
+        //public class Person
+        //{
+        //    public string Name { get; set; }
+        //    public void SayHello() => Console.WriteLine($"Hello, I'm {Name}");
+        //}
 
-        // Interface
-        public interface IWorker
-        {
-            void Work();
-        }
+        //// Interface
+        //public interface IWorker
+        //{
+        //    void Work();
+        //}
 
-        // Interface
-        public interface IRest
-        {
-            void Rest();
-        }
+        //// Interface
+        //public interface IRest
+        //{
+        //    void Rest();
+        //}
 
-        // Class that meets all constraints
-        public class Employee : Person, IWorker, IRest
-        {
-            public Employee() { } // Parameterless constructor
+        //// Class that meets all constraints
+        //public class Employee : Person, IWorker, IRest
+        //{
+        //    public Employee() { } // Parameterless constructor
 
-            public void Work() => Console.WriteLine($"{Name} is working");
-            public void Rest() => Console.WriteLine($"{Name} is resting");
-        }
+        //    public void Work() => Console.WriteLine($"{Name} is working");
+        //    public void Rest() => Console.WriteLine($"{Name} is resting");
+        //}
 
-        // Generic class with multiple constraints
-        public class EmployeeManager<T> where T : Person, IWorker, IRest, new()
-        {
-            public void Manage(T employee)
-            {
-                Console.WriteLine($"Managing {employee.Name}:");
-                employee.SayHello(); // From Person
-                employee.Work();     // From IWorker
-                employee.Rest();     // From IRest
-                Console.WriteLine();
-            }
+        //// Generic class with multiple constraints
+        //public class EmployeeManager<T> where T : Person, IWorker, IRest, new()
+        //{
+        //    public void Manage(T employee)
+        //    {
+        //        Console.WriteLine($"Managing {employee.Name}:");
+        //        employee.SayHello(); // From Person
+        //        employee.Work();     // From IWorker
+        //        employee.Rest();     // From IRest
+        //        Console.WriteLine();
+        //    }
 
-            public T CreateDefault()
-            {
-                T employee = new T();
-                employee.Name = "Default Employee";
-                return employee;
-            }
-        }
+        //    public T CreateDefault()
+        //    {
+        //        T employee = new T();
+        //        employee.Name = "Default Employee";
+        //        return employee;
+        //    }
+        //}
 
         // --------------------------------------------------------------------------------------------//
     }
