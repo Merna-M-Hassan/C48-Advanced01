@@ -63,9 +63,34 @@ namespace Assignment_10_C__Advanced
             #region Q5)
             //Write a generic method FindMax<T> that finds maximum value.
 
-           int  numberOne = 50, numberTwo = 100;
+            //int  numberOne = 50, numberTwo = 100;
 
-            Console.WriteLine(Utility.Max<int>(numberOne, numberTwo)); ;
+            // Console.WriteLine(Utility.Max<int>(numberOne, numberTwo)); ;
+            #endregion
+
+            #region Q6)
+            //What is a generic interface? Write IRepository<T>.
+
+            /*
+             * Defines a contract that can work with any data type. Don't care what that type until implement the interface.
+             * Any class/struct implement the generic interface will defines the data type.
+             */
+
+            Product product01 = new Product(201, "Laptop", 16.500m);
+            Product product02 = new Product(203, "TV", 60.00m);
+            Product product03 = new Product(206, "Smart Watch", 10.500m);
+
+            ProductRepository repository = new ProductRepository();
+
+            repository.Add(product01);
+            repository.Add(product02);
+            repository.Add(product03);
+
+            List<Product> products = repository.GetAll();
+
+            Product p01 = repository.GetById(206);
+
+            repository.Delete(203);
             #endregion
         }
     }
