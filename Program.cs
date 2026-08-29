@@ -245,7 +245,6 @@ namespace Assignment_10_C__Advanced
              */
             #endregion
 
-
             #region Q18)
             //How do static members work in generic types?
 
@@ -253,6 +252,16 @@ namespace Assignment_10_C__Advanced
              *Are not shared across different generic instantiations. Each time you use a generic type with a different type parameter, get a completely separate copy of all static members.
              *Each type gets its own static constructor (called once per type).
              *Each type has its own static fields and properties.
+             */
+            #endregion
+
+            #region Q19)
+            //How can you inherit from a generic class?
+
+            /*
+             * By Keeping the type parameter open: the derived class remains generic and passes the type parameter to the base class.
+             * Close the type parameter: the derived class is non-generic and specifies the exact type for the base class.
+             * Partially close the type parameter: use some type parameters and keep others open.
              */
             #endregion
         }
